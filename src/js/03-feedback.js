@@ -10,33 +10,17 @@ const feedBackForm = document.querySelector('.feedback-form');
 feedBackForm.addEventListener('submit', onFormSubmit);
 feedBackForm.addEventListener('input', throttle(onTextareaInput, 500));
 
-
-// refs.form.addEventListener('input', e => {
-//     // console.log(e.target);
-
-//     formData[e.target.name] = e.target.value;
-
-//     console.log(formData);
-// })
-
-//     localStorage.setItem(STORAGE_KEY, JSON.stringify({formData}));
-
-//     const savedData = localStorage.getItem('formData');
-//     console.log('savedData', savedData);
-
-//     const parcedData = JSON.parse(savedData);
-//     console.log('parsedData', parcedData)
-
-
-
-
-
 populateTextarea();
-
 
 function onFormSubmit(evt){
     evt.preventDefault();
- 
+    const {
+        elements: {email, message}
+    } = evt.currentTarget;
+    
+ if(feedBackForm.email.value ==="" || feedBackForm.message.value ===''){
+    return console.log('Please fill in all the fields');
+ }
     console.log(formData());
     
     evt.currentTarget.reset();
@@ -66,3 +50,7 @@ function populateTextarea() {
 } catch(error){
 }
 }
+
+// function onFormSubmit(input) {
+//     return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(input.vlue);
+// }
