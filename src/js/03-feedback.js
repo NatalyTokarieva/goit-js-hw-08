@@ -12,20 +12,42 @@ feedBackForm.addEventListener('input', throttle(onTextareaInput, 500));
 
 populateTextarea();
 
+// function onFormSubmit(evt){
+//     evt.preventDefault();
+//     const {email, message} = formData();
+//     console.log(email, message);
+   
+//     feedBackForm.reset();
+//     localStorage.removeItem(STORAGE_KEY);
+// }
+
 function onFormSubmit(evt){
     evt.preventDefault();
     const {
-        elements: {email, message}
+        elements: { email, message }
+    
     } = evt.currentTarget;
-    
- if(feedBackForm.email.value ==="" || feedBackForm.message.value ===''){
-    return console.log('Please fill in all the fields');
- }
+    if(email.value === "" || message.value === ""){
+        return alert("Please fill in all the fields!");
+    }
     console.log(formData());
-    
     evt.currentTarget.reset();
-    localStorage.removeItem(STORAGE_KEY)
+    localStorage.removeItem(STORAGE_KEY);
+
 }
+
+//     const {
+//         elements: {email, message}
+//     } = evt.currentTarget;
+    
+//  if(feedBackForm.email.value ==="" || feedBackForm.message.value ===''){
+//     return console.log('Please fill in all the fields');
+//  }
+    // console.log(formData());
+    
+    // evt.currentTarget.reset();
+    // localStorage.removeItem(STORAGE_KEY)
+// }
 
 function onTextareaInput(evt){
     // const message = evt.target.value;
